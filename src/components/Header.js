@@ -1,11 +1,11 @@
 import React from 'react'
 
-function Chat() {
+function Header() {
     return (
         <div>
-            Chat
+            
         </div>
     )
 }
 
-export default Chat
+export default Header
