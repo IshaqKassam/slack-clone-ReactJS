@@ -4,7 +4,7 @@ import AccessTimeIcon from '@material-ui/icons/AccessTime';
 import HelpOutlineIcon from '@material-ui/icons/HelpOutline';
 import PersonOutlineIcon from '@material-ui/icons/PersonOutline';
 
-function Header() {
+function Header({ user, signOut }) {
     return (
         <Container>
             <Main>
@@ -18,10 +18,10 @@ function Header() {
             </Main>
             <UserContainer>
                 <Name>
-                    Qahsi
+                    {user.name}
                 </Name>
-                <UserImage>
-                    <PersonOutlineIcon/>
+                <UserImage onClick={signOut}>
+                    <img src={user.photo ? user.photo : "https://i.imgur.com/6y8x3io.png"}/>
                 </UserImage>
             </UserContainer>
         </Container>
@@ -89,7 +89,8 @@ const UserImage = styled.div`
     height: 28px;
     border: 2px solid white;
     border-radius: 3px;
-    align-text
+    align-text: center;
+    cursor: pointer;
 
     img{
         width: 100%;

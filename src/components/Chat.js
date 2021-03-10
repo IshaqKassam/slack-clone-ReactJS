@@ -1,16 +1,38 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import InfoOutlinedIcon from '@material-ui/icons/InfoOutlined';
 import ChatInput from './ChatInput';
 import ChatMessage from './ChatMessage';
+import db from '../firebase';
+import { useParams } from 'react-router-dom';
+import Login  from './Login';
 
 function Chat() {
+
+    let { channelId } = useParams();
+    const [ channel, setChannel ] = useState();
+
+    const getChannel = () => {
+        db.collection('rooms')
+        .doc(channelId)
+        .onSnapshot((snapshot) => {
+            setChannel(snapshot.data());
+        })
+    }
+
+    useEffect(() =>{
+        getChannel();
+    }, [channelId])
+
+    let name = channel.name;
+
+
     return (
         <Container>
             <Header>
                 <Channel>
                     <ChannelName>
-                        Clever
+                        { name }
                     </ChannelName>
                     <ChannelInfo>
                         Channels announcements
