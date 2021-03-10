@@ -24,15 +24,12 @@ function Chat() {
         getChannel();
     }, [channelId])
 
-    let name = channel.name;
-
-
     return (
         <Container>
             <Header>
                 <Channel>
                     <ChannelName>
-                        { name }
+                        # { channel.name }
                     </ChannelName>
                     <ChannelInfo>
                         Channels announcements
