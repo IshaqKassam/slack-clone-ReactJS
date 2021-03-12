@@ -1,6 +1,8 @@
 import React, {useState} from 'react'
 import styled from 'styled-components';
 import SendIcon from '@material-ui/icons/Send';
+import ReactDOM from "react-dom";
+import MDEditor from '@uiw/react-md-editor';
 
 function ChatInput({ sendMessage }) {
 
@@ -18,6 +20,13 @@ function ChatInput({ sendMessage }) {
         <Container>
             <InputContainer>
             <form>
+            
+            {/* <MDEditor
+                value={input}
+                onChange={setInput}
+            /> */}
+
+            
                 <input
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
@@ -52,6 +61,10 @@ const InputContainer = styled.div`
         height: 42px;
         align-items: center;
         padding-left:10px;
+
+        .container{
+            width: 100%;
+        }
 
         input{
             flex: 1;
